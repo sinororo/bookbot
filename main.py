@@ -1,14 +1,32 @@
+import sys
+
 from stats import count_words
 from stats import sort_count_chars
 
-print("============ BOOKBOT ============\n" \
-"Analyzing book found at books/frankenstein.txt...\n"
-"----------- Word Count ----------")
 
-count_words("./books/frankenstein.txt")
+def main():
+    
+    #check if cli argument was provided:
 
-print("--------- Character Count -------")
+    if len(sys.argv) > 1:
+        path = sys.argv[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
-sort_count_chars("./books/frankenstein.txt")
+    print("============ BOOKBOT ============\n" \
+    "Analyzing book found at {path}\n"
+    "----------- Word Count ----------")
 
-print("============= END ===============")
+    count_words(path)
+
+    print("--------- Character Count -------")
+
+    sort_count_chars(path)
+
+    print("============= END ===============")
+
+
+if __name__== "__main__":
+    main()
+
